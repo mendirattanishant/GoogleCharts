@@ -1,0 +1,263 @@
+<html>
+<body>
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<div id="sankey_multiple" style="width: 900px; height: 300px;"></div>
+
+<script type="text/javascript">
+var toppings =localStorage.getItem('toppings');
+var cheeseSauce = localStorage.getItem('cheesesauce');
+console.log(cheeseSauce);
+console.log(toppings);
+
+if(localStorage.getItem('American') === null) {
+	localStorage.setItem('American', 20);
+}
+
+if(localStorage.getItem('Italian') === null) {
+	localStorage.setItem('Italian', 25);
+}
+
+if(localStorage.getItem('Swiss') === null) {
+	localStorage.setItem('Swiss', 15);
+}
+
+if(localStorage.getItem('Cheddar') === null) {
+	localStorage.setItem('Cheddar', 10);
+}
+
+if(localStorage.getItem('Pepper') === null) {
+	localStorage.setItem('Pepper', 25);
+}
+
+if(localStorage.getItem('Honey') === null) {
+	localStorage.setItem('Honey', 15);
+}
+
+if(localStorage.getItem('Chipotle') === null) {
+	localStorage.setItem('Chipotle', 30);
+}
+
+if(localStorage.getItem('Hawaiian') === null) {
+	localStorage.setItem('Hawaiian', 10);
+}
+
+if(localStorage.getItem('Ranch') === null) {
+	localStorage.setItem('Ranch', 20);
+}
+
+if(localStorage.getItem('Mayonnaise') === null) {
+	localStorage.setItem('Mayonnaise', 20);
+}
+
+if(localStorage.getItem('Vinegar') === null) {
+	localStorage.setItem('Vinegar', 23);
+}
+
+if(localStorage.getItem('Pepperoni') === null) {
+	localStorage.setItem('Pepperoni', 20);
+}
+
+if(localStorage.getItem('Beef') === null) {
+	localStorage.setItem('Beef', 25);
+}
+
+if(localStorage.getItem('Steak') === null) {
+	localStorage.setItem('Steak', 15);
+}
+
+if(localStorage.getItem('Ham') === null) {
+	localStorage.setItem('Ham', 20);
+}
+
+if(localStorage.getItem('Bacon') === null) {
+	localStorage.setItem('Bacon', 15);
+}
+
+if(localStorage.getItem('Salami') === null) {
+	localStorage.setItem('Salami', 25);
+}
+
+if(localStorage.getItem('Chicken') === null) {
+	localStorage.setItem('Chicken', 10);
+}
+
+
+  google.charts.load("current", {packages:["sankey"]});
+  google.charts.setOnLoadCallback(drawChart);
+   function drawChart() {
+    var data = new google.visualization.DataTable();
+          data.addColumn('string', 'From');
+          data.addColumn('string', 'To');
+          data.addColumn('number', 'Weight');
+
+           data.addRows ([
+		   ['Cheese_American' , 'Sauce_Mayonnaise ',  parseInt(localStorage.getItem('American')) ],
+		   ['Cheese_American' , 'Sauce_Ranch ' ,  parseInt(localStorage.getItem('American')) ],
+		   ['Cheese_American' , 'Sauce_Chipotle',  parseInt(localStorage.getItem('American')) ],
+		   ['Cheese_American' , 'Sauce_Honey',  parseInt(localStorage.getItem('American')) ],
+		   ['Cheese_American' , 'Sauce_Hawaiian' ,  parseInt(localStorage.getItem('American')) ],
+		   ['Cheese_American' , 'Sauce_Vinegar' ,  parseInt(localStorage.getItem('American')) ],
+
+		   ['Cheese_Italian' , 'Sauce_Mayonnaise ',  parseInt(localStorage.getItem('Italian')) ],
+		   ['Cheese_Italian' , 'Sauce_Ranch ' ,  parseInt(localStorage.getItem('Italian')) ],
+		   ['Cheese_Italian' , 'Sauce_Chipotle',  parseInt(localStorage.getItem('Italian')) ],
+		   ['Cheese_Italian' , 'Sauce_Honey',  parseInt(localStorage.getItem('Italian')) ],
+		   ['Cheese_Italian' , 'Sauce_Hawaiian' ,  parseInt(localStorage.getItem('Italian')) ],
+		   ['Cheese_Italian' , 'Sauce_Vinegar' ,  parseInt(localStorage.getItem('Italian')) ],
+
+		   ['Cheese_Cheddar' , 'Sauce_Mayonnaise ',  parseInt(localStorage.getItem('Cheddar')) ],
+		   ['Cheese_Cheddar' , 'Sauce_Ranch ' ,  parseInt(localStorage.getItem('Cheddar')) ],
+		   ['Cheese_Cheddar' , 'Sauce_Chipotle',  parseInt(localStorage.getItem('Cheddar')) ],
+		   ['Cheese_Cheddar' , 'Sauce_Honey',  parseInt(localStorage.getItem('Cheddar')) ],
+		   ['Cheese_Cheddar' , 'Sauce_Hawaiian' ,  parseInt(localStorage.getItem('Cheddar')) ],
+		   ['Cheese_Cheddar' , 'Sauce_Vinegar' ,  parseInt(localStorage.getItem('Cheddar')) ],
+
+		   ['Cheese_Pepper' , 'Sauce_Mayonnaise ',  parseInt(localStorage.getItem('Pepper')) ],
+		   ['Cheese_Pepper' , 'Sauce_Ranch ' ,  parseInt(localStorage.getItem('Pepper')) ],
+		   ['Cheese_Pepper' , 'Sauce_Chipotle',  parseInt(localStorage.getItem('Pepper')) ],
+		   ['Cheese_Pepper' , 'Sauce_Honey',  parseInt(localStorage.getItem('Pepper')) ],
+		   ['Cheese_Pepper' , 'Sauce_Hawaiian' ,  parseInt(localStorage.getItem('Pepper')) ],
+		   ['Cheese_Pepper' , 'Sauce_Vinegar' ,  parseInt(localStorage.getItem('Pepper')) ],
+
+		   ['Cheese_Swiss' , 'Sauce_Mayonnaise ',  parseInt(localStorage.getItem('Swiss')) ],
+		   ['Cheese_Swiss' , 'Sauce_Ranch ' ,  parseInt(localStorage.getItem('Swiss')) ],
+		   ['Cheese_Swiss' , 'Sauce_Chipotle',  parseInt(localStorage.getItem('Swiss')) ],
+		   ['Cheese_Swiss' , 'Sauce_Honey',  parseInt(localStorage.getItem('Swiss')) ],
+		   ['Cheese_Swiss' , 'Sauce_Hawaiian' ,  parseInt(localStorage.getItem('Swiss')) ],
+		   ['Cheese_Swiss' , 'Sauce_Vinegar' ,  parseInt(localStorage.getItem('Swiss')) ],
+
+		   ['Sauce_Honey ' , 'Meat_Pepporoni   ' ,  parseInt(localStorage.getItem('Honey')) ],	
+		   ['Sauce_Honey ' , 'Meat_Beef   ' ,  parseInt(localStorage.getItem('Honey')) ],	
+		   ['Sauce_Honey ' , 'Meat_Steak   ' ,  parseInt(localStorage.getItem('Honey')) ],
+		   ['Sauce_Honey ' , 'Meat_Ham   ' ,  parseInt(localStorage.getItem('Honey')) ],
+		   ['Sauce_Honey ' , 'Meat_Bacon   ' ,  parseInt(localStorage.getItem('Honey')) ],	
+		   ['Sauce_Honey ' , 'Meat_Salami   ' ,  parseInt(localStorage.getItem('Honey')) ],
+		   ['Sauce_Honey ' , 'Meat_Chicken   ' ,  parseInt(localStorage.getItem('Honey')) ],
+
+		   ['Sauce_Chipotle ' , 'Meat_Pepporoni   ' ,  parseInt(localStorage.getItem('Chipotle')) ],	
+		   ['Sauce_Chipotle ' , 'Meat_Beef   ' ,  parseInt(localStorage.getItem('Chipotle')) ],	
+		   ['Sauce_Chipotle ' , 'Meat_Steak   ' ,  parseInt(localStorage.getItem('Chipotle')) ],
+		   ['Sauce_Chipotle ' , 'Meat_Ham   ' ,  parseInt(localStorage.getItem('Chipotle')) ],
+		   ['Sauce_Chipotle ' , 'Meat_Bacon   ' ,  parseInt(localStorage.getItem('Chipotle')) ],	
+		   ['Sauce_Chipotle ' , 'Meat_Salami   ' ,  parseInt(localStorage.getItem('Chipotle')) ],
+		   ['Sauce_Chipotle ' , 'Meat_Chicken   ' ,  parseInt(localStorage.getItem('Chipotle')) ],
+
+		   ['Sauce_Hawaiian' , 'Meat_Pepporoni   ' ,  parseInt(localStorage.getItem('Hawaiian')) ],	
+		   ['Sauce_Hawaiian ' , 'Meat_Beef   ' ,  parseInt(localStorage.getItem('Hawaiian')) ],	
+		   ['Sauce_Hawaiian ' , 'Meat_Steak   ' ,  parseInt(localStorage.getItem('Hawaiian')) ],
+		   ['Sauce_Hawaiian ' , 'Meat_Ham   ' ,  parseInt(localStorage.getItem('Hawaiian')) ],
+		   ['Sauce_Hawaiian ' , 'Meat_Bacon   ' ,  parseInt(localStorage.getItem('Hawaiian')) ],	
+		   ['Sauce_Hawaiian ' , 'Meat_Salami   ' ,  parseInt(localStorage.getItem('Hawaiian')) ],
+		   ['Sauce_Hawaiian ' , 'Meat_Chicken   ' ,  parseInt(localStorage.getItem('Hawaiian')) ],
+
+		    ['Sauce_Ranch ' , 'Meat_Pepporoni   ' ,  parseInt(localStorage.getItem('Ranch')) ],	
+		   ['Sauce_Ranch ' , 'Meat_Beef   ' ,  parseInt(localStorage.getItem('Ranch')) ],	
+		   ['Sauce_Ranch ' , 'Meat_Steak   ' ,  parseInt(localStorage.getItem('Ranch')) ],
+		   ['Sauce_Ranch ' , 'Meat_Ham   ' ,  parseInt(localStorage.getItem('Ranch')) ],
+		   ['Sauce_Ranch ' , 'Meat_Bacon   ' ,  parseInt(localStorage.getItem('Ranch')) ],	
+		   ['Sauce_Ranch ' , 'Meat_Salami   ' ,  parseInt(localStorage.getItem('Ranch')) ],
+		   ['Sauce_Ranch ' , 'Meat_Chicken   ' ,  parseInt(localStorage.getItem('Ranch')) ],
+
+		   ['Sauce_Mayonnaise ' , 'Meat_Pepporoni   ' ,  parseInt(localStorage.getItem('Mayonnaise')) ],	
+		   ['Sauce_Mayonnaise ' , 'Meat_Beef   ' ,  parseInt(localStorage.getItem('Mayonnaise')) ],	
+		   ['Sauce_Mayonnaise ' , 'Meat_Steak   ' ,  parseInt(localStorage.getItem('Mayonnaise')) ],
+		   ['Sauce_Mayonnaise ' , 'Meat_Ham   ' ,  parseInt(localStorage.getItem('Mayonnaise')) ],
+		   ['Sauce_Mayonnaise ' , 'Meat_Bacon   ' ,  parseInt(localStorage.getItem('Mayonnaise')) ],	
+		   ['Sauce_Mayonnaise ' , 'Meat_Salami   ' ,  parseInt(localStorage.getItem('Mayonnaise')) ],
+		   ['Sauce_Mayonnaise ' , 'Meat_Chicken   ' ,  parseInt(localStorage.getItem('Mayonnaise')) ],
+
+		 
+		   
+		    ['Sauce_Vinegar ' , 'Meat_Pepporoni   ' ,  parseInt(localStorage.getItem('Vinegar')) ],	
+		   ['Sauce_Vinegar ' , 'Meat_Beef   ' ,  parseInt(localStorage.getItem('Vinegar')) ],	
+		   ['Sauce_Vinegar ' , 'Meat_Steak   ' ,  parseInt(localStorage.getItem('Vinegar')) ],
+		   ['Sauce_Vinegar ' , 'Meat_Ham   ' ,  parseInt(localStorage.getItem('Vinegar')) ],
+		   ['Sauce_Vinegar ' , 'Meat_Bacon   ' ,  parseInt(localStorage.getItem('Vinegar')) ],	
+		   ['Sauce_Vinegar ' , 'Meat_Salami   ' ,  parseInt(localStorage.getItem('Vinegar')) ],
+		   ['Sauce_Vinegar ' , 'Meat_Chicken   ' ,  parseInt(localStorage.getItem('Vinegar')) ],
+
+
+
+		   ['Meat_Beef ' , 'Non_Meat_Banana_Peppers   ' ,  parseInt(localStorage.getItem('Beef')) ],	
+		   ['Meat_Beef ' , 'Non_Meat_Olives   ' ,  parseInt(localStorage.getItem('Beef')) ],
+		   ['Meat_Beef ' , 'Non_meat_garlic   ' ,  parseInt(localStorage.getItem('Beef')) ],
+		   ['Meat_Beef ' , 'Non_meat_Peppers ' ,  parseInt(localStorage.getItem('Beef')) ],	
+		   ['Meat_Beef ' , 'Non_meat_mushrooms   ' ,  parseInt(localStorage.getItem('Beef')) ],
+		   ['Meat_Beef ' , 'Non_meat_pineapple   ' ,  parseInt(localStorage.getItem('Beef')) ],	
+		   ['Meat_Beef ' , 'Non_meat_onions  ' ,  parseInt(localStorage.getItem('Beef')) ],
+		   ['Meat_Beef ' , 'Non_meat_spinach   ' ,  parseInt(localStorage.getItem('Beef')) ],
+
+
+		   ['Meat_Pepperoni ' , 'Non_Meat_Banana_Peppers   ' ,  parseInt(localStorage.getItem('Pepperoni')) ],	
+		   ['Meat_Pepperoni ' , 'Non_Meat_Olives   ' ,  parseInt(localStorage.getItem('Pepperoni')) ],
+		   ['Meat_Pepperoni ' , 'Non_meat_garlic   ' ,  parseInt(localStorage.getItem('Pepperoni')) ],
+		   ['Meat_Pepperoni ' , 'Non_meat_Peppers ' ,  parseInt(localStorage.getItem('Pepperoni')) ],	
+		   ['Meat_Pepperoni ' , 'Non_meat_mushrooms   ' ,  parseInt(localStorage.getItem('Pepperoni')) ],
+		   ['Meat_Pepperoni ' , 'Non_meat_pineapple   ' ,  parseInt(localStorage.getItem('Pepperoni')) ],	
+		   ['Meat_Pepperoni ' , 'Non_meat_onions  ' ,  parseInt(localStorage.getItem('Pepperoni')) ],
+		   ['Meat_Pepperoni ' , 'Non_meat_spinach   ' ,  parseInt(localStorage.getItem('Pepperoni')) ],
+
+
+		   ['Meat_Steak ' , 'Non_Meat_Banana_Peppers   ' ,  parseInt(localStorage.getItem('Steak')) ],	
+		   ['Meat_Steak ' , 'Non_Meat_Olives   ' ,  parseInt(localStorage.getItem('Steak')) ],
+		   ['Meat_Steak ' , 'Non_meat_garlic   ' ,  parseInt(localStorage.getItem('Steak')) ],
+		   ['Meat_Steak ' , 'Non_meat_Peppers ' ,  parseInt(localStorage.getItem('Steak')) ],	
+		   ['Meat_Steak ' , 'Non_meat_mushrooms   ' ,  parseInt(localStorage.getItem('Steak')) ],
+		   ['Meat_Steak ' , 'Non_meat_pineapple   ' ,  parseInt(localStorage.getItem('Steak')) ],	
+		   ['Meat_Steak ' , 'Non_meat_onions  ' ,  parseInt(localStorage.getItem('Steak')) ],
+		   ['Meat_Steak ' , 'Non_meat_spinach   ' ,  parseInt(localStorage.getItem('Steak')) ],
+
+		   
+		   ['Meat_Ham ' , 'Non_Meat_Banana_Peppers   ' ,  parseInt(localStorage.getItem('Ham')) ],	
+		   ['Meat_Ham ' , 'Non_Meat_Olives   ' ,  parseInt(localStorage.getItem('Ham')) ],
+		   ['Meat_Ham ' , 'Non_meat_garlic   ' ,  parseInt(localStorage.getItem('Ham')) ],
+		   ['Meat_Ham ' , 'Non_meat_Peppers ' ,  parseInt(localStorage.getItem('Ham')) ],	
+		   ['Meat_Ham ' , 'Non_meat_mushrooms   ' ,  parseInt(localStorage.getItem('Ham')) ],
+		   ['Meat_Ham ' , 'Non_meat_pineapple   ' ,  parseInt(localStorage.getItem('Ham')) ],	
+		   ['Meat_Ham ' , 'Non_meat_onions  ' ,  parseInt(localStorage.getItem('Ham')) ],
+		   ['Meat_Ham ' , 'Non_meat_spinach   ' ,  parseInt(localStorage.getItem('Ham')) ],
+		
+		   ['Meat_Bacon ' , 'Non_Meat_Banana_Peppers   ' ,  parseInt(localStorage.getItem('Bacon')) ],	
+		   ['Meat_Bacon ' , 'Non_Meat_Olives   ' ,  parseInt(localStorage.getItem('Bacon')) ],
+		   ['Meat_Bacon ' , 'Non_meat_garlic   ' ,  parseInt(localStorage.getItem('Bacon')) ],
+		   ['Meat_Bacon ' , 'Non_meat_Peppers ' ,  parseInt(localStorage.getItem('Bacon')) ],	
+		   ['Meat_Bacon ' , 'Non_meat_mushrooms   ' ,  parseInt(localStorage.getItem('Bacon')) ],
+		   ['Meat_Bacon ' , 'Non_meat_pineapple   ' ,  parseInt(localStorage.getItem('Bacon')) ],	
+		   ['Meat_Bacon ' , 'Non_meat_onions  ' ,  parseInt(localStorage.getItem('Bacon')) ],
+		   ['Meat_Bacon ' , 'Non_meat_spinach   ' ,  parseInt(localStorage.getItem('Bacon')) ],
+		
+		  
+		   ['Meat_Salami ' , 'Non_Meat_Banana_Peppers   ' ,  parseInt(localStorage.getItem('Salami')) ],	
+		   ['Meat_Salami ' , 'Non_Meat_Olives   ' ,  parseInt(localStorage.getItem('Salami')) ],
+		   ['Meat_Salami ' , 'Non_meat_garlic   ' ,  parseInt(localStorage.getItem('Salami')) ],
+		   ['Meat_Salami ' , 'Non_meat_Peppers ' ,  parseInt(localStorage.getItem('Salami')) ],	
+		   ['Meat_Salami ' , 'Non_meat_mushrooms   ' ,  parseInt(localStorage.getItem('Salami')) ],
+		   ['Meat_Salami ' , 'Non_meat_pineapple   ' ,  parseInt(localStorage.getItem('Salami')) ],	
+		   ['Meat_Salami ' , 'Non_meat_onions  ' ,  parseInt(localStorage.getItem('Salami')) ],
+		   ['Meat_Salami ' , 'Non_meat_spinach   ' ,  parseInt(localStorage.getItem('Salami')) ],
+
+
+		   ['Meat_Chicken ' , 'Non_Meat_Banana_Peppers   ' ,  parseInt(localStorage.getItem('Chicken')) ],	
+		   ['Meat_Chicken ' , 'Non_Meat_Olives   ' ,  parseInt(localStorage.getItem('Chicken')) ],
+		   ['Meat_Chicken ' , 'Non_meat_garlic   ' ,  parseInt(localStorage.getItem('Chicken')) ],
+		   ['Meat_Chicken ' , 'Non_meat_Peppers ' ,  parseInt(localStorage.getItem('Chicken')) ],	
+		   ['Meat_Chicken ' , 'Non_meat_mushrooms   ' ,  parseInt(localStorage.getItem('Chicken')) ],
+		   ['Meat_Chicken ' , 'Non_meat_pineapple   ' ,  parseInt(localStorage.getItem('Chicken')) ],	
+		   ['Meat_Chicken ' , 'Non_meat_onions  ' ,  parseInt(localStorage.getItem('Chicken')) ],
+		   ['Meat_Chicken ' , 'Non_meat_spinach   ' ,  parseInt(localStorage.getItem('Chicken')) ],
+
+           ]);
+ // Set chart options
+    var options = {
+      width: 600,
+    };
+
+    // Instantiate and draw our chart, passing in some options.
+    var chart = new google.visualization.Sankey(document.getElementById('sankey_multiple'))
+    chart.draw(data, options);
+   }
+</script>
+<a href="home.html"><button type="button" class="button-style" value="home">Home</button></a>
+</body>
+</html>
